@@ -3,8 +3,7 @@ from datetime import datetime
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
-
+CORS(app)  # Allow all origins
 
 def is_allowed():
     return True
@@ -16,6 +15,7 @@ def hello():
         current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         return jsonify({'message': 'Hello from Python Anywhere. This is an API call!!!', 'time': current_time})
     else:
-        return jsonify({'error': f'Not allowed'}), 403
+        return jsonify({'error': 'Not allowed'}), 403
+
 if __name__ == '__main__':
     app.run(port=5002)
